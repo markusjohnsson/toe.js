@@ -1,0 +1,13 @@
+{
+  "name": "toe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.0.25",
+    "@types/react-dom": "^16.0.3",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "system-lite": "^1.0.1"
+  }
+}

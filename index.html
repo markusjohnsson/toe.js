@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="node_modules/system-lite/system-lite.js"></script>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="toe.js"></script>
+    <script>
+        System.registerExternal('react', React);
+        System.registerExternal('react-dom', ReactDOM);
+        System.require('gui');
+    </script>
+</body>
+
+</html>
