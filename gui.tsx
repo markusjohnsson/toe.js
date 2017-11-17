@@ -27,7 +27,7 @@ const RenderCell = (props: { cell: string, cellClicked: () => void }): JSX.Eleme
     <div style={CellStyle} onClick={() => props.cellClicked()}>
         {
             props.cell == 'X' ? <XCell /> : 
-            props.cell == 'O' ? <OCell /> : ' '
+            props.cell == 'O' ? <OCell /> : ''
         }
     </div>);
 
