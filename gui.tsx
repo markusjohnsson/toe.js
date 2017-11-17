@@ -61,20 +61,29 @@ class GameBoard extends React.Component<{}, { gameState: GameState }> {
         this.setState({ gameState: selectCell(this.state.gameState, r, c) });
     }
 
+    restart() {
+        this.setState({ gameState: EmptyState });
+    }
+
     render() {
         return (
             <div style={{ textAlign: "center", color: "gray", fontFamily: "sans-serif" }}>
                 {
                     this.state.gameState.type == "settled" ?
                         <h1>Vinnare: {this.state.gameState.winner}</h1> :
-                        this.state.gameState.type == "tied" ?
-                            <h1>Oavgjort</h1> :
-                            <h1>Nästa spelare: {this.state.gameState.turn}</h1>
+                    this.state.gameState.type == "tied" ?
+                        <h1>Oavgjort</h1> :
+                        <h1>Nästa spelare: {this.state.gameState.turn}</h1>
                 }
 
                 <RenderBoard
                     state={this.state.gameState.board}
                     cellClicked={this.onCellClicked} />
+
+                {
+                    this.state.gameState.type != "ongoing" &&
+                    <button onClick={() => this.restart()}>En gång till</button>
+                }
             </div>);
     }
 }
