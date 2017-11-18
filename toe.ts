@@ -12,9 +12,6 @@ export type GameState = OngoingGame | SettledGame | TiedGame;
 export const EmptyBoardState: BoardState = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
 export const EmptyState: GameState = { type: "ongoing", turn: 'X', board: EmptyBoardState };
 
-export const stringify = (gameState: BoardState) =>
-    gameState.map(row => row.join(' ')).join('\n');
-
 export const selectCell = (gameState: OngoingGame, rowIndex: number, columnIndex: number): GameState => {
     if (isFreeCell(gameState.board[rowIndex][columnIndex]) == false) {
         return gameState;

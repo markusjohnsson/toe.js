@@ -115,9 +115,9 @@ setimmediate@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
 
-system-lite@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/system-lite/-/system-lite-1.0.1.tgz#897dcd2f533d56b73322bb9d8054f7334d2361e4"
+system-lite@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/system-lite/-/system-lite-1.1.0.tgz#bb812ca9f73fd51f7d20e14d8430dd581f268288"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"
