@@ -2,6 +2,7 @@
 import { BoardState, RowState, EmptyState, selectCell, GameState } from "./toe";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { logGame, suggestMove } from "./ai";
 
 const CellStyle: React.CSSProperties = {
     width: "100px",
@@ -51,18 +52,33 @@ class GameBoard extends React.Component<{}, { gameState: GameState }> {
         this.state = { gameState: EmptyState }
     }
 
-    onCellClicked = (r: number, c: number) => {
+    selectCell = (r: number, c: number) => {
         if (this.state.gameState.type == "settled")
             return;
 
         if (this.state.gameState.type == "tied")
             return;
 
-        this.setState({ gameState: selectCell(this.state.gameState, r, c) });
+            
+        const newState = selectCell(this.state.gameState, r, c);
+
+        this.setState({ gameState: newState }, () => {
+
+            if (newState.type == "ongoing" && newState.turn == 'O')
+                this.aiMove();
+        });
+
     }
 
     restart() {
         this.setState({ gameState: EmptyState });
+    }
+
+    aiMove() {
+        if (this.state.gameState.type != "ongoing")
+            return;
+        const suggested = suggestMove(this.state.gameState);
+        this.selectCell(suggested.row, suggested.col);
     }
 
     render() {
@@ -78,7 +94,7 @@ class GameBoard extends React.Component<{}, { gameState: GameState }> {
 
                 <RenderBoard
                     state={this.state.gameState.board}
-                    cellClicked={this.onCellClicked} />
+                    cellClicked={this.selectCell} />
 
                 {
                     this.state.gameState.type != "ongoing" &&
